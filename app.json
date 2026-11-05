@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "SİMBAD SCOUT",
+    "slug": "simbad-scout",
+    "scheme": "simbadscout",
+    "version": "0.4.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#131B2A",
+    "android": {
+      "package": "com.simbadscout",
+      "versionCode": 3,
+      "allowBackup": false,
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ],
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#131B2A"
+      }
+    },
+    "plugins": [
+      "expo-secure-store",
+      "./plugins/withReleaseSigning"
+    ],
+    "icon": "./assets/icon.png"
+  }
+}
