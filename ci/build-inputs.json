@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "files": {
+    ".env.example": "7e724d56dc7061ef79b77ffe1ebbdd4a34a320cf",
+    "App.tsx": "0f0248da92c2960e3b3f111954ee30a76b1d251b",
+    "app.json": "5f019e29c20c2e264e0fb5ebc8cedf10296961d2",
+    "assets/adaptive-icon.png": "028209613257b39bc6d27025311d4b46ff72231b",
+    "assets/icon.png": "28aa5ee21cfaf506e1e4b1cc09d2521533c0b8f7",
+    "package-lock.json": "576bdcf0ee132af0c2b9ae33b31d8b8182b8219d",
+    "package.json": "f80e2eeab9ddd880596e1212f15414f3dcfbec12",
+    "plugins/withReleaseSigning.js": "b76e1e122f6e94eb36559e0dc33dfe1317d18e65",
+    "src/api.ts": "920829a39c1ca90b2e325b639564b99df853943c",
+    "src/config.ts": "375c44451f0726b4a956ecce777e8f304f0fd8d4",
+    "src/country.ts": "62dc9c64b3045106b02e2a71977c6886548630d3",
+    "src/errors.ts": "840e958f6f5e63ead2f1cba3cf37527b2fb1770f",
+    "src/i18n.ts": "c81ef454d52ec982f09aa8774ca0e27f19119c44",
+    "src/screens/Assistant.tsx": "d30037f27f128baaea05b6f1a9f50976a18d28fe",
+    "src/screens/Auth.tsx": "facc0eafa87a1092e5732e23c8e4b6b7e4e10baa",
+    "src/screens/Billing.tsx": "d46e0047299b2f5c76e34ee4d2b68247ae44fe87",
+    "src/screens/Main.tsx": "5a4e4c591d867b4975d5596c7e768e0a78ffbe82",
+    "src/screens/Notifications.tsx": "987bb1a0cb60ed64ebd79af43b93605daf4f5676",
+    "src/screens/Security.tsx": "921c76322af4a5279103aba29b30e55b099ada71",
+    "src/screens/Server.tsx": "9ff1599f380fd664bf0d8db5bd653dd6ea105e90",
+    "src/types.ts": "edeeba2e8c7687dfaf3703640064b8f199e0c4d5",
+    "src/ui.tsx": "64451876e01159532c162e90407ed0bb44b72731",
+    "src/useApi.ts": "f4aeb3add17c5a66a70cb3d3c2e8a29ad1ac98c2",
+    "tests/country.test.ts": "b9440bba2942909260e0dfaf34ef8f994ff95602",
+    "tests/mobile.test.ts": "c75ac9f885177a48226c57e1a3df41ed703d1e08",
+    "tests/signing.test.ts": "157d74dc02bf35ba536cdcb3bd222610cda7f1e9",
+    "tsconfig.json": "e3e16bbb0819530594edfd582983998ce80a4d4e",
+    "whatsnew/whatsnew-en-US": "83433324146305df112a89f677717046a6d1164f",
+    "whatsnew/whatsnew-tr-TR": "24107ae48d62307d47dc14672bf3576658e38e40"
+  }
+}
+

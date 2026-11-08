@@ -22,6 +22,12 @@ jobs:
       HAS_PLAY_ACCOUNT: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON != '' }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify reviewed public inputs before dependencies or signing
+        run: |
+          python3 -m unittest discover -s ci -p 'test_*.py' -v
+          python3 ci/verify-build-inputs.py
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -31,6 +37,22 @@ jobs:
           java-version: '17'
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
+      - name: Typecheck and mobile unit tests before signing
+        run: |
+          npm run typecheck
+          npm test
+      - name: Record public build identity (no private repository identifiers)
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          manifest = Path('ci/build-inputs.json').read_bytes()
+          data = {'schema_version': 1, 'public_commit': os.environ['GITHUB_SHA'],
+                  'run_id': os.environ['GITHUB_RUN_ID'], 'run_attempt': os.environ['GITHUB_RUN_ATTEMPT'],
+                  'public_inputs_sha256': hashlib.sha256(manifest).hexdigest(),
+                  'checks': ['public_inputs', 'typecheck', 'mobile_unit_tests']}
+          Path(os.environ['RUNNER_TEMP'], 'build-provenance.json').write_text(json.dumps(data, indent=2) + '\n')
+          PY
       - name: Version code from the run number (every build is a valid Play update)
         run: |
           python3 - <<'PY'
@@ -112,6 +134,7 @@ jobs:
           unzip -l apk/release/app-release.apk | grep -E "lib/(arm64-v8a|armeabi-v7a)/" | head -3
           # minSdk / targetSdk as built
           "$ANDROID_HOME"/build-tools/$(ls "$ANDROID_HOME"/build-tools | sort -V | tail -1)/aapt dump badging apk/release/app-release.apk | grep -E "^package:|sdkVersion|targetSdkVersion"
+          cp "$RUNNER_TEMP/build-provenance.json" build-provenance.json
       - name: Phone-installable APK as its own small download
         uses: actions/upload-artifact@v4
         with:
@@ -137,3 +160,5 @@ jobs:
             android/app/build/outputs/apk/debug/app-debug.apk
             android/app/build/outputs/apk/release/app-release.apk
             android/app/build/outputs/bundle/release/app-release.aab
+            android/app/build/outputs/build-provenance.json
+
